@@ -9,5 +9,5 @@ The main algorithms for this project are:
 
 
 # Contributors:
-<kbd>command</kbd>Alex Baranov.
-<kbd>command</kbd>Raziel Rey.
+Tab Alex Baranov.  
+Tab Raziel Rey.

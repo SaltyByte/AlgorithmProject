@@ -10,4 +10,3 @@ The main algorithms for this project are:
 
 # Contributors:
 * Alex Baranov.  
-* Raziel Rey.

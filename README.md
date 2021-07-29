@@ -1,11 +1,9 @@
 # AlgorithmProject
-This projects main idea is to visualize pathfinding algorithms.  
+This projects main idea is to visualize pathfinding algorithms on graphs.  
 The main algorithms for this project are:
-* A* algorithm.
 * Dijkstra's algorithm.
 * BFS algorithm.
 * DFS algorithm.
-* Double sided dijkstra.
 
 
 # Contributors:

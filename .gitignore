@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/META-INF/MANIFEST.MF
+/out/
+/.idea/

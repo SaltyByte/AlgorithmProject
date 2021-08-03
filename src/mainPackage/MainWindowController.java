@@ -261,19 +261,13 @@ public class MainWindowController implements Initializable {
     private void runDFSAlgorithm() {
         float speed = speedChoiceBox.getValue();
         int src = -1;
-        int dest;
         try {
             src = Integer.parseInt(startingNode.getText());
         } catch (Exception ignored) {
         }
-        try {
-            dest = Integer.parseInt(endingNode.getText());
-        } catch (Exception e) {
-            dest = -1;
-        }
         if (src >= 0 && graph.getNode(src) != null) {
-            DFSAlgorithm dfs = new DFSAlgorithm(graph, mainCanvas.getGraphicsContext2D(), distanceLabel, pathLabel);
-            dfs.start(src);
+            DFSAlgorithm dfs = new DFSAlgorithm(graph, mainCanvas.getGraphicsContext2D());
+            dfs.start(src, speed);
         }
     }
 

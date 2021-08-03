@@ -6,31 +6,71 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="1108.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.MainWindowController">
    <children>
-      <Canvas fx:id="mainCanvas" height="600.0" layoutX="194.0" layoutY="55.0" onMouseClicked="#handleMouseClickOnCanvas" onMouseDragged="#handleMouseDragFromNode" onMousePressed="#handleMouseClicked" onMouseReleased="#handleMouseRelease" width="900.0" />
-      <Label alignment="CENTER" layoutX="54.0" layoutY="27.0" text="Algorithm Type" textAlignment="CENTER" />
-      <ChoiceBox fx:id="algorithmTypeChoiceBox" layoutX="20.0" layoutY="49.0" prefWidth="150.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="99.0" prefHeight="17.0" prefWidth="92.0" text="Algorithm" textAlignment="CENTER" />
-      <ChoiceBox fx:id="algorithmChoiceBox" layoutX="20.0" layoutY="130.0" prefWidth="150.0" />
-      <Button layoutX="49.0" layoutY="368.0" mnemonicParsing="false" onAction="#runAlgorithm" prefHeight="25.0" prefWidth="92.0" text="Start" />
-      <RadioButton fx:id="addNode" contentDisplay="CENTER" layoutX="603.0" layoutY="27.0" mnemonicParsing="false" text="Add Nodes" textAlignment="CENTER" />
-      <TextField fx:id="startingNode" layoutX="20.0" layoutY="267.0" promptText="Source Node.." />
-      <Label layoutX="51.0" layoutY="242.0" text="Starting Node:" />
-      <Label alignment="CENTER" layoutX="54.0" layoutY="304.0" text="Ending Node:" textAlignment="CENTER" />
-      <TextField fx:id="endingNode" layoutX="20.0" layoutY="321.0" promptText="End Node.." />
-      <Button layoutX="724.0" layoutY="23.0" mnemonicParsing="false" onAction="#clearCanvas" text="Clear Canvas" />
+      <Canvas fx:id="mainCanvas" height="498.0" layoutX="194.0" layoutY="157.0" onMouseClicked="#handleMouseClickOnCanvas" onMouseDragged="#handleMouseDragFromNode" onMousePressed="#handleMouseClicked" onMouseReleased="#handleMouseRelease" width="900.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="39.0" prefHeight="17.0" prefWidth="92.0" text="Algorithm" textAlignment="CENTER">
+         <tooltip>
+            <Tooltip fx:id="algorithmTooltip" text="algorithm tooltip" />
+         </tooltip></Label>
+      <ChoiceBox fx:id="algorithmChoiceBox" layoutX="27.0" layoutY="64.0" prefWidth="150.0" />
+      <Button layoutX="49.0" layoutY="330.0" mnemonicParsing="false" onAction="#runAlgorithm" prefHeight="25.0" prefWidth="92.0" text="Start" />
+      <RadioButton fx:id="addNode" contentDisplay="CENTER" layoutX="627.0" layoutY="35.0" mnemonicParsing="false" textAlignment="CENTER" />
+      <TextField fx:id="startingNode" layoutX="20.0" layoutY="216.0" promptText="Source Node.." />
+      <Label layoutX="56.0" layoutY="192.0" text="Starting Node:">
+         <tooltip>
+            <Tooltip fx:id="startNodeTooltip" text="Empty Tooltip" />
+         </tooltip></Label>
+      <Label alignment="CENTER" layoutX="59.0" layoutY="261.0" text="Ending Node:" textAlignment="CENTER">
+         <tooltip>
+            <Tooltip fx:id="endNodeTooltip" text="Empty Tooltip" />
+         </tooltip></Label>
+      <TextField fx:id="endingNode" layoutX="20.0" layoutY="286.0" promptText="End Node.." />
+      <Button layoutX="724.0" layoutY="23.0" mnemonicParsing="false" onAction="#clearCanvas" text="Clear Canvas">
+         <tooltip>
+            <Tooltip fx:id="clearCanvasTooltip" text="Empty Tooltip" />
+         </tooltip></Button>
       <TextField fx:id="weightForEdge" layoutX="432.0" layoutY="23.0" promptText="Weight.." />
-      <Label fx:id="distanceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="232.0" layoutY="62.0" prefHeight="40.0" prefWidth="861.0">
+      <Label fx:id="distanceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="64.0" prefHeight="40.0" prefWidth="900.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="823.0" layoutY="23.0" mnemonicParsing="false" onAction="#resetGraphColors" text="Reset Colors" />
-      <ChoiceBox fx:id="speedChoiceBox" layoutX="58.0" layoutY="187.0" prefHeight="25.0" prefWidth="63.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="162.0" prefHeight="17.0" prefWidth="92.0" text="Speed" textAlignment="CENTER" />
+      <Button layoutX="823.0" layoutY="23.0" mnemonicParsing="false" onAction="#resetGraphColors" text="Reset Colors">
+         <tooltip>
+            <Tooltip fx:id="resetCanvasTooltip" text="Empty Tooltip" />
+         </tooltip></Button>
+      <ChoiceBox fx:id="speedChoiceBox" layoutX="63.0" layoutY="130.0" prefHeight="25.0" prefWidth="63.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="101.0" prefHeight="17.0" prefWidth="92.0" text="Speed" textAlignment="CENTER">
+         <tooltip>
+            <Tooltip fx:id="speedTooltip" text="Empty Tooltip" />
+         </tooltip></Label>
+      <Label fx:id="pathLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="110.0" prefHeight="40.0" prefWidth="900.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="379.0" layoutY="27.0" prefHeight="17.0" prefWidth="46.0" text="Weight:">
+         <tooltip>
+            <Tooltip fx:id="weightTooltip" text="Empty Tooltip" />
+         </tooltip>
+      </Label>
+      <Label layoutX="609.0" layoutY="14.0" prefHeight="17.0" prefWidth="82.0" text="Add Node:">
+         <tooltip>
+            <Tooltip fx:id="addNodeTooltip" text="Empty Tooltip" />
+         </tooltip>
+      </Label>
+      <Label layoutX="994.0" layoutY="11.0" prefHeight="40.0" prefWidth="46.0" text="Help!" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <tooltip>
+            <Tooltip fx:id="helpTooltip" text="Empty Tooltip" />
+         </tooltip>
+      </Label>
    </children>
 </AnchorPane>

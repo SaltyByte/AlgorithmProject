@@ -16,17 +16,18 @@ import java.util.Queue;
 
 
 public class BFSAlgorithm {
-    private UndirectedGraph graph;
-    private boolean[] visited;
-    private int[] distance;
-    private int[] pred;
-    private int size;
-    private GraphicsContext gc;
+    private final UndirectedGraph graph;
+    private final boolean[] visited;
+    private final int[] distance;
+    private final int[] pred;
+    private final int size;
+    private final GraphicsContext gc;
     private final int inf = Integer.MAX_VALUE;
-    private Label distanceLabel;
+    private final Label distanceLabel;
+    private final Label pathLabel;
 
 
-    public BFSAlgorithm(UndirectedGraph graph, GraphicsContext gc, Label distanceLabel ) {
+    public BFSAlgorithm(UndirectedGraph graph, GraphicsContext gc, Label distanceLabel, Label pathLabel) {
         this.graph = graph;
         this.gc = gc;
         this.size = graph.getNodeSize();
@@ -34,6 +35,7 @@ public class BFSAlgorithm {
         this.distance = new int[size];
         this.pred = new int[size];
         this.distanceLabel = distanceLabel;
+        this.pathLabel = pathLabel;
     }
 
     /**
@@ -41,10 +43,10 @@ public class BFSAlgorithm {
      * This function uses Task as a thread to run besides the UI thread
      *
      * @param startNode - starting node id
-     * @param destNode - end node id
+     * @param destNode  - end node id
      */
     public void start(int startNode, int destNode, float speed) {
-        long runningSpeed = (long)(1000 / speed);
+        long runningSpeed = (long) (1000 / speed);
         Task<Void> algorithmTask = new Task<>() {
             @Override
             protected Void call() {
@@ -61,7 +63,7 @@ public class BFSAlgorithm {
                     DrawItems.drawNode(gc, n, Color.YELLOW, Color.BLACK);
                     sleep(runningSpeed);
                     for (Edge v : graph.getE(n.getKey())) {
-                        DrawItems.drawEdge(gc, v,Color.BLACK);
+                        DrawItems.drawEdge(gc, v, Color.BLACK);
                         if (!visited[v.getDest().getKey()]) {
                             DrawItems.drawNode(gc, v.getDest(), Color.RED, Color.BLACK);
                             sleep(runningSpeed);
@@ -73,10 +75,23 @@ public class BFSAlgorithm {
                         if (v.getDest().getKey() == destNode) {
                             // need to update label like this, otherwise it crashes.
                             Platform.runLater(() ->
-                                    distanceLabel.setText("Distance From Node :" + startNode + " To Node: " + destNode + " Is: " + distance[destNode]));
+                                    distanceLabel.setText("Distance From Node: " + startNode + " To Node: " + destNode + " Is: " + distance[destNode]));
+                            Platform.runLater(() -> {
+                                        StringBuilder path = new StringBuilder();
+                                        int parent = destNode;
+                                        path.append(getReverseInt(parent));
+                                        parent = pred[parent];
+                                        while (parent != -1) { // loop to build path
+                                            path.append(">-").append(getReverseInt(parent));
+                                            parent = pred[parent];
+                                        }
+                                        path.reverse();
+                                        pathLabel.setText("Path: " + path);
+                                    }
+                            );
                         }
                     }
-                    DrawItems.drawNode(gc, n,Color.BLUE, Color.WHITE);
+                    DrawItems.drawNode(gc, n, Color.BLUE, Color.WHITE);
                     visited[n.getKey()] = true;
                     sleep(runningSpeed);
                 }
@@ -95,11 +110,20 @@ public class BFSAlgorithm {
         return pred;
     }
 
-    private void sleep(long time){
+    private void sleep(long time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    public int getReverseInt(int value) {
+        int resultNumber = 0;
+        for (int i = value; i != 0; i /= 10) {
+            resultNumber = resultNumber * 10 + i % 10;
+        }
+        return resultNumber;
+    }
+
 }

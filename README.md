@@ -1,6 +1,6 @@
 ![](Images/Front_Page.png)
 
-# Little Algorithm Project
+# Algorithms Project
 This projects main idea is to visualize pathfinding algorithms on graphs.  
 The main algorithms for this project are:
 * Dijkstra's algorithm.

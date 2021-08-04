@@ -7,13 +7,13 @@ The main algorithms for this project are:
 * BFS algorithm.
 * DFS algorithm.
 
-Basic utilization of the programs:
+Basic utilization of the program: 
 ![](Media/Basic.gif)
 
-This programs includes a drag and drop function:
+This programs includes a drag and drop function: 
 ![](Media/Drag.gif)
 
-Adding desired weight:
+Adding desired weight: 
 ![](Media/WithWeight.gif)
 
 

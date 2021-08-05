@@ -1,8 +1,8 @@
 # Algorithms Visualizer Program
 ![](Media/Front_Page.png)
 
-This projects main idea is to visualize pathfinding algorithms on graphs.  
-The main algorithms for this project are:
+This program's main idea is to visualize pathfinding algorithms on graphs.  
+The three main algorithms for this project are:
 * Dijkstra's algorithm.
 * BFS algorithm.
 * DFS algorithm.
@@ -16,9 +16,3 @@ This programs includes a drag and drop function:
 
 Adding desired weight: 
 ![](Media/WithWeight.gif)
-
-
-
-
-# Contributors:
-* Alex Baranov.  
